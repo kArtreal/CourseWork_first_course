@@ -131,6 +131,7 @@
     <ClCompile Include="CourseWork.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="encryption.h" />
     <ClInclude Include="MyList.h" />
     <ClInclude Include="MyMenu.h" />
     <ClInclude Include="Student.h" />

@@ -1,5 +1,4 @@
-#ifndef TEST_STUDENT_H
-#define TEST_STUDENT_H
+#pragma once
 #include <iostream>
 #include <cstring>
 #include <conio.h>
@@ -7,7 +6,8 @@ using namespace std;
 
 class Student{
 private:
-    struct Exams{
+    class Exams{
+    public:
         char name_of_exam[31];
         int mark;
     };
@@ -88,7 +88,7 @@ public:
         cout<<"Введите количество предметов в семестре ";cin>>temp_int2;
         for (int i = 0; i < temp_int1; i++){
             for (int j = 0; j < temp_int2; j++) {
-                cout<<"Введите название и оценку "<<j+1<<" предмета в семестре "<<i+1<<' ';
+                cout<<"Введите название и оценку "<<j+1<<" предмета в семестре "<<i+1<<' '<<endl;
                 cin>>temp>>temp_int3;
                 strncpy_s(grades[i][j].name_of_exam, temp, 30);
                 grades[i][j].mark=temp_int1;
@@ -97,6 +97,7 @@ public:
     }
     void Show_Full_Info(){
         cout<<surname<<' '<<name<<' '<<patronymic<<' '<<BD_day<<' '<<BD_month<<' '<<BD_year<<endl;
+        cout << "Пол студента: " << sex << endl;
         cout<<"Год поступления: "<<entranceYear<<endl;
         cout<<"Институт: "<<faculty<<endl;
         cout<<"Кафедра: "<<department<<endl;
@@ -112,7 +113,10 @@ public:
         }
     }
     void Show_Basic_Info(){
-        cout<<"ФИО:"<<surname<<' '<<name<<' '<<patronymic<<endl<<"Номер зачетной книжки: "<<gradebookNumber<<endl;
+        cout << "ФИО: " << surname << ' ' << name << ' ' << patronymic << endl
+            << "Номер зачетной книжки: " << gradebookNumber <<"   "
+            << "Пол студента: " << sex << "   "
+            << "Год поступления: " << entranceYear << endl << endl;
     }
     void Edit_Student(){
         system("cls");
@@ -120,7 +124,7 @@ public:
         cout << "1. Изменить ФИО и пол студента" << endl;
         cout << "2. Изменить дату рождения студента" << endl;
         cout << "3. Изменить информацию о месте обучения студента" << endl;
-        cout << "4. Изменить информацию о зачетной книжке " << endl;
+        cout << "4. Изменить информацию о зачетной книжке" << endl;
         cout << "0. Назад" << endl;
         cin>>button;
         switch (button) {
@@ -222,8 +226,13 @@ public:
         else
             return false;
     }
-    char GetName(){
-        return name[31];
+    int GetEntranceYear() {
+        return entranceYear;
+    }
+    char GetName() {
+        return name[30];
+    }
+    char GetSex() {
+        return sex;
     }
 };
-#endif //TEST_STUDENT_H
